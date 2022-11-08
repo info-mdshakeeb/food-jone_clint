@@ -7,16 +7,25 @@ const ServicesDetails = () => {
     const details = useLoaderData()
     const { user } = useContext(authUser);
     const [text, setText] = useState('')
+    const { displayName, photoURL } = user
 
     const getEmail = (e) => {
         e.preventDefault()
         const form = e.target;
-        const text = form.text.value;
-        setText(text)
+        const textR = form.text.value;
+        setText(textR)
+        const userR = { name: displayName, image: photoURL, text }
+
+        fetch('http://localhost:2100/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userR)
+        })
+            .then(res => res.json())
+            .then(result => console.log(result))
     }
-
-    console.log(text);
-
 
     const { name, image_url, descriptin, price } = details.data;
     return (

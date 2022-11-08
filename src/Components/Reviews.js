@@ -4,12 +4,12 @@ import Review from './Home/Review';
 
 const Reviews = () => {
     const data = useLoaderData();
-    const { reviews } = data
+    const { reviews } = data;
 
     return (
         <div className="">
             {
-                reviews.map(review => <Review key={reviews._id} review={review}></Review>)
+                reviews.map(review => <Review key={review._id} review={review}></Review>)
             }
         </div>
     );
