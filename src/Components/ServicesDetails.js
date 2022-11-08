@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import Reviews from './Reviews';
@@ -6,15 +6,14 @@ import Reviews from './Reviews';
 const ServicesDetails = () => {
     const details = useLoaderData()
     const { user } = useContext(authUser);
-    const [text, setText] = useState('')
     const { displayName, photoURL } = user
 
     const getEmail = (e) => {
         e.preventDefault()
         const form = e.target;
         const textR = form.text.value;
-        setText(textR)
-        const userR = { name: displayName, image: photoURL, text }
+        const userR = { name: displayName, image: photoURL, text: textR }
+        form.reset()
 
         fetch('http://localhost:2100/reviews', {
             method: 'POST',

@@ -11,7 +11,7 @@ const Navbar = () => {
         {user ?
             <li><NavLink to='/'>Add service</NavLink></li> : null}
         {user ?
-            <li><NavLink to='/'>My reviews</NavLink></li> : null}
+            <li><NavLink to='/myreviews'>My reviews</NavLink></li> : null}
 
         <li><NavLink to='/blog'>blog</NavLink></li>
     </>
