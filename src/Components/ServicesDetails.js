@@ -6,24 +6,26 @@ import Reviews from './Reviews';
 const ServicesDetails = () => {
     const details = useLoaderData()
     const { user } = useContext(authUser);
-    const { displayName, photoURL } = user
+
 
     const getEmail = (e) => {
         e.preventDefault()
         const form = e.target;
         const textR = form.text.value;
-        const userR = { name: displayName, image: photoURL, text: textR }
         form.reset()
-
-        fetch('http://localhost:2100/reviews', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(userR)
-        })
-            .then(res => res.json())
-            .then(result => console.log(result))
+        if (user) {
+            const { displayName, photoURL, email } = user
+            const userR = { name: displayName, image: photoURL, text: textR, email: email }
+            fetch('http://localhost:2100/reviews', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userR)
+            })
+                .then(res => res.json())
+                .then(result => console.log(result))
+        }
     }
 
     const { name, image_url, descriptin, price } = details.data;
