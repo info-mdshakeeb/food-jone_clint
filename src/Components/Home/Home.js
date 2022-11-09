@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ServicesSection from './ServicesSection';
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
                             <span className='text-orange-500'>in Your City</span></h1>
                         <p className="mb-5  text-gray-500">Food Zone assures fresh fodd every time to your <br />
                             family without getting out in this pandemic..</p>
-                        <button className="btn btn-warning text-gray-700">Order Now</button>
+                        <Link to='/Services' className="btn btn-warning text-gray-700">Order Now</Link>
                     </div>
                 </div>
             </div>

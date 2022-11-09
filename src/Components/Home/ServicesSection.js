@@ -14,7 +14,7 @@ const ServicesSection = () => {
                     services.data?.map(service => <Service key={service._id} service={service}></Service>)
                 }
             </div>
-            <div className="text-center">
+            <div className="text-center py-10 ">
                 <Link className='btn btn-outline' to='/Services'>see more</Link>
             </div>
         </div>

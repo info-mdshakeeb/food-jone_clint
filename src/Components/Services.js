@@ -5,7 +5,7 @@ import Service from './Home/Service';
 const Services = () => {
     const services = useLoaderData();
     return (
-        <div className="">
+        <div className="pb-10">
             <div className="mt-20 mb-5">
                 <p className='text-2xl text-center'>My All SerVices</p>
             </div>
