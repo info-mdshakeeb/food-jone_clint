@@ -6,7 +6,7 @@ const ServicesSection = () => {
     const services = useLoaderData();
     return (
         <div className="">
-            <div className="mt-20 mb-5">
+            <div className="mt-10 ">
                 <p className='text-2xl text-center'>My SerVices</p>
             </div>
             <div className='md:w-4/5 md:grid md:grid-cols-2 lg:grid-cols-3 mx-auto gap-3'>
