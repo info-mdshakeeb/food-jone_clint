@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import AlartMessage from '../Hook/AlartMessage';
 import useTitle from '../Hook/useTitile';
@@ -8,12 +8,16 @@ const Login = () => {
     useTitle("login")
     const { successMessage, errorMessage } = AlartMessage()
     const { googlelogin, setUser, loginWithEmail, setloading } = useContext(authUser)
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/'
     const loginWithGoogle = () => {
-
+        setloading(true)
         googlelogin()
             .then(rs => {
                 setUser(rs.user)
                 successMessage('Login Success')
+                navigate(from, { replace: true })
 
             })
             .catch(er => errorMessage(er.message))
@@ -29,7 +33,7 @@ const Login = () => {
                 setUser(re.user)
                 form.reset()
                 successMessage('login succesFull 9;')
-
+                navigate(from, { replace: true })
             })
             .catch(er => errorMessage(er.message))
     }
