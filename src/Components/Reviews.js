@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Review from './Home/Review';
+import Review from './Review';
 
 const Reviews = () => {
     // const data = useLoaderData();
