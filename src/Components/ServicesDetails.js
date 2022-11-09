@@ -30,7 +30,8 @@ const ServicesDetails = () => {
         }
     }
 
-    const { name, image_url, descriptin, price } = details.data;
+    const { _id, name, image_url, descriptin, price } = details.data;
+    console.log(_id)
     return (
         <div className="md:flex p-10">
             <div className="md:w-1/2">
