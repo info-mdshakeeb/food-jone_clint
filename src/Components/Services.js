@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../Hook/useTitile';
 import Service from './Home/Service';
 
 const Services = () => {
+    useTitle("Services")
     const services = useLoaderData();
     return (
         <div className="pb-10">

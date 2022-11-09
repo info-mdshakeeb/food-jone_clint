@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../Hook/useTitile';
 import ServicesSection from './ServicesSection';
 
 const Home = () => {
+    useTitle("Home")
     return (
         <div className="">
             {/* hero section */}

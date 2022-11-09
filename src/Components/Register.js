@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import AlartMessage from '../Hook/AlartMessage';
+import useTitle from '../Hook/useTitile';
 
 const Register = () => {
+    useTitle("Resister")
     const { successMessage, errorMessage } = AlartMessage()
     const { createUser, setUserNAme, varifymail, setloading } = useContext(authUser);
     const navigate = useNavigate()

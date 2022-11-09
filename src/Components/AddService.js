@@ -1,8 +1,10 @@
 import React from 'react';
 import AlartMessage from '../Hook/AlartMessage';
+import useTitle from '../Hook/useTitile';
 
 const AddService = () => {
     const { successMessage } = AlartMessage()
+    useTitle("Add service")
     const heandelRegister = e => {
         e.preventDefault()
         const form = e.target;

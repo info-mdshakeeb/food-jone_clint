@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import AlartMessage from '../Hook/AlartMessage';
+import useTitle from '../Hook/useTitile';
 
 const Login = () => {
+    useTitle("login")
     const { successMessage, errorMessage } = AlartMessage()
     const { googlelogin, setUser, loginWithEmail, setloading } = useContext(authUser)
     const loginWithGoogle = () => {

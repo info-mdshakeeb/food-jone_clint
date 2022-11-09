@@ -46,5 +46,5 @@ export const router = createBrowserRouter([
             { path: '/addservices', element: <PrivateRoutes><AddService /></PrivateRoutes> },
         ]
     },
-    { path: "*", element: <p>rong router</p> }
+    { path: "*", element: <p className="text-center mt-10">rong router</p> }
 ])

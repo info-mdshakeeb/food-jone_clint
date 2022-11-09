@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authUser } from '../Context/UserContext';
+import useTitle from '../Hook/useTitile';
 import Myrewiew from './Myrewiew';
 
 const Myreviews = () => {
     const { user } = useContext(authUser);
     const [myrewiews, setMyrewiews] = useState([]);
+    useTitle("My reviews")
 
     const emaiL = { email: user.email }
 
