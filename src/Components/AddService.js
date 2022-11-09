@@ -1,6 +1,8 @@
 import React from 'react';
+import AlartMessage from '../Hook/AlartMessage';
 
 const AddService = () => {
+    const { successMessage } = AlartMessage()
     const heandelRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -8,20 +10,25 @@ const AddService = () => {
         const description = form.description.value;
         const servicename = form.servicename.value;
         const url = form.photourl.value;
-        const user = { servicename, url, price, description, }
-        console.log(user)
+        const service = {
+            image_url: url,
+            name: servicename,
+            price: price,
+            descriptin: description
 
-        fetch('http://localhost:2100/user', {
+        }
+        form.reset()
+
+
+        fetch('http://localhost:2100/addservices', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(service)
         })
             .then(res => res.json())
-            .then(result => console.log(result))
-
-
+            .then(result => successMessage('added successfully'))
     }
     return (
         <form onSubmit={heandelRegister} className="mt-20 h-screen ">
@@ -41,19 +48,19 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text">Photo Url</span>
                             </label>
-                            <input type="text" placeholder="url" name='photourl' className="input input-bordered" />
+                            <input type="text" placeholder="url" name='photourl' className="input input-bordered" required />
                         </div>
                         <div className="form-control  mb-4">
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="text" placeholder="Price" name='price' className="input input-bordered" />
+                            <input type="text" placeholder="Price" name='price' className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Description</span>
                             </label>
-                            <textarea className="textarea textarea-bordered h-24" placeholder="About producd" name='description'></textarea>
+                            <textarea className="textarea textarea-bordered h-24" placeholder="About producd" name='description' required></textarea>
                         </div>
                         <div className="form-control mt-2">
                             <button className="btn btn-primary">Submit</button>
