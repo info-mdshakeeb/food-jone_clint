@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { authUser } from '../Context/UserContext';
 import Myrewiew from './Myrewiew';
 
@@ -7,21 +7,29 @@ const Myreviews = () => {
     const [myrewiews, setMyrewiews] = useState([]);
 
     const emaiL = { email: user.email }
-    fetch('http://localhost:2100/myreviews', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(emaiL)
-    })
-        .then(res => res.json())
-        .then(result => setMyrewiews(result.data))
 
+    useEffect(() => {
+        fetch('http://localhost:2100/myreviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(emaiL)
+        })
+            .then(res => res.json())
+            .then(result => setMyrewiews(result.data))
 
+    }, [])
     return (
         <div className='w-1/2 mx-auto mt-10' >
-            {myrewiews?.map(myrewiew =>
-                <Myrewiew key={myrewiew._id} myrewiew={myrewiew} ></Myrewiew>)}
+            {myrewiews.length ?
+                <div className="">
+                    {myrewiews?.map(myrewiew =>
+                        <Myrewiew key={myrewiew._id} myrewiew={myrewiew} ></Myrewiew>)}
+                </div> :
+                <p className=' mt-40 text-center'>No reviews were added </p>
+
+            }
         </div>
     );
 };
