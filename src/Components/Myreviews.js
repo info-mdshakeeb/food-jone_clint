@@ -28,7 +28,6 @@ const Myreviews = () => {
 
             }).catch(err => (err))
     }
-
     return (
         <div className='md:w-3/5 mx-auto' >
             {myrewiews.length ?
