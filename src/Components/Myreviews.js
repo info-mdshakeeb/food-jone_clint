@@ -19,7 +19,7 @@ const Myreviews = () => {
             .then(res => res.json())
             .then(result => setMyrewiews(result.data))
 
-    }, [])
+    },)
     return (
         <div className='w-1/2 mx-auto mt-10' >
             {myrewiews.length ?

@@ -9,7 +9,7 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink to='/home'>Home</NavLink></li>
         {user ?
-            <li><NavLink to='/'>Add service</NavLink></li> : null}
+            <li><NavLink to='/addservices'>Add service</NavLink></li> : null}
         {user ?
             <li><NavLink to='/myreviews'>My reviews</NavLink></li> : null}
 
