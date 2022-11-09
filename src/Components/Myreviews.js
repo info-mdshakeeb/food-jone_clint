@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import useTitle from '../Hook/useTitile';
 
 const Myreviews = () => {
     const { user } = useContext(authUser);
+    const naigate = useNavigate();
     const [myrewiews, setMyrewiews] = useState({});
     const [refresh, setRefresh] = useState(false);
     useTitle("My reviews")
@@ -23,11 +25,13 @@ const Myreviews = () => {
                 const remain = myrewiews.filter(or => or._id !== _id)
                 setMyrewiews(remain)
                 console.log(remain);
-
                 setRefresh(!refresh)
-
             }).catch(err => (err))
     }
+    const heandelEdit = _id => {
+        naigate(`/myreviews/edit/${_id}`)
+    }
+
     return (
         <div className='md:w-3/5 mx-auto' >
             {myrewiews.length ?
@@ -48,7 +52,7 @@ const Myreviews = () => {
                                         <th onClick={() => heandeldelete(myrewiew._id)} className='cursor-pointer'>X</th>
                                         <td>{myrewiew.name}</td>
                                         <th className=' w-64  h-10'>{myrewiew.text}</th>
-                                        <td className='btn'>edit</td>
+                                        <td onClick={() => heandelEdit(myrewiew._id)} className='btn'>edit</td>
                                     </tr>)
                                 }
                             </tbody>
