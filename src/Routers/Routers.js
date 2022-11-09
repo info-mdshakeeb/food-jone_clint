@@ -8,6 +8,7 @@ import Reviews from "../Components/Reviews";
 import Services from "../Components/Services";
 import ServicesDetails from "../Components/ServicesDetails";
 import Layout from "../Layout/Layout";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 export const router = createBrowserRouter([
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
                 element: <ServicesDetails />,
                 loader: ({ params }) => fetch(`http://localhost:2100/services/${params.id}`)
             },
-            { path: '/myreviews', element: <Myreviews /> }
+            { path: '/myreviews', element: <PrivateRoutes><Myreviews /></PrivateRoutes> }
         ]
     },
     { path: "*", element: <p>rong router</p> }
