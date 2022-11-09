@@ -7,7 +7,9 @@ const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(authUser);
     const location = useLocation();
     if (loading) {
-        return <p>loading.....</p>
+        return <div className="flex h-screen items-center ">
+            <p className="text-center w-full">loading.....</p>
+        </div>
     }
     if (!user) {
         return <Navigate to='/login' state={{ from: location }} replace />
