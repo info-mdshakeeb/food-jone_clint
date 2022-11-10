@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { authUser } from '../Context/UserContext';
 import Review from './Review';
 
 const Reviews = () => {
-    // const data = useLoaderData();
-    // const { reviews } = data;
+    const { user } = useContext(authUser);
+    const router = useParams()
+    const [loading, setLoading] = useState(true);
 
     const [reviews, setReviews] = useState();
     useEffect(() => {
-        fetch('http://localhost:2100/reviews')
+        fetch(`http://localhost:2100/reviews?id=${router.id}`)
             .then(res => res.json())
-            .then(data => setReviews(data.data))
-    }, [reviews])
+            .then(data => {
+                setLoading(!loading);
+                setReviews(data.data)
+            })
+    }, [router.id, loading])
 
     return (
         <div className="">

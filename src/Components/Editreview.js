@@ -32,7 +32,6 @@ const Editreview = () => {
             body: JSON.stringify(rewiew)
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.success) {
                     navigate("/myreviews")
                 } else {

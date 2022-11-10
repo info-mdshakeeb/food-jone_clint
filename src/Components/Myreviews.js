@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
+import AlartMessage from '../Hook/AlartMessage';
 import useTitle from '../Hook/useTitile';
 
 const Myreviews = () => {
     const { user } = useContext(authUser);
     const naigate = useNavigate();
+    const { successMessage, errorMessage } = AlartMessage()
     const [myrewiews, setMyrewiews] = useState({});
     const [refresh, setRefresh] = useState(false);
     useTitle("My reviews")
@@ -25,8 +27,9 @@ const Myreviews = () => {
                 const remain = myrewiews.filter(or => or._id !== _id)
                 setMyrewiews(remain)
                 console.log(remain);
+                successMessage('successFully Delete')
                 setRefresh(!refresh)
-            }).catch(err => (err))
+            }).catch(err => errorMessage(err.message))
     }
     const heandelEdit = _id => {
         naigate(`/myreviews/edit/${_id}`)

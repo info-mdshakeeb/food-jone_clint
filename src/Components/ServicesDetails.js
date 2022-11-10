@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import useTitle from '../Hook/useTitile';
 import Reviews from './Reviews';
@@ -8,7 +8,7 @@ const ServicesDetails = () => {
     useTitle("ServicesDetails")
     const details = useLoaderData()
     const { user } = useContext(authUser);
-
+    const router = useParams();
 
     const getEmail = (e) => {
         e.preventDefault()
@@ -17,7 +17,7 @@ const ServicesDetails = () => {
         form.reset()
         if (user) {
             const { displayName, photoURL, email } = user
-            const userR = { name: displayName, image: photoURL, text: textR, email: email }
+            const userR = { id: router.id, name: displayName, image: photoURL, text: textR, email: email }
             fetch('http://localhost:2100/reviews', {
                 method: 'POST',
                 headers: {
@@ -30,7 +30,7 @@ const ServicesDetails = () => {
         }
     }
 
-    const { _id, name, image_url, descriptin, price } = details.data;
+    const { name, image_url, descriptin, price } = details.data;
 
     return (
         <div className="md:flex p-10">
