@@ -13,7 +13,7 @@ const Myreviews = () => {
     useTitle("My reviews")
 
     useEffect(() => {
-        fetch(`https://food-zone-server-itzshakeeb.vercel.app/myreviews?email=${user.email}`, {
+        fetch(`https://food-zone-server-itzshakeeb.vercel.app/myreviews?email=${user?.email}`, {
             headers: {
                 authorization: `${localStorage.getItem('Login-Token')}`
             }

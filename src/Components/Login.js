@@ -28,7 +28,8 @@ const Login = () => {
                     },
                     body: JSON.stringify(currentUser)
                 }).then(res => res.json()).then(data => {
-                    localStorage.setItem('Login-Token', data.token)
+                    console.log(data)
+                    localStorage.setItem('Login-Token', data?.token)
                 })
                 successMessage('Login Success')
                 navigate(from, { replace: true })
