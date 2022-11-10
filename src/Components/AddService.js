@@ -16,13 +16,13 @@ const AddService = () => {
             image_url: url,
             name: servicename,
             price: price,
-            descriptin: description
-
+            descriptin: description,
+            dateAdded: new Date()
         }
         form.reset()
 
 
-        fetch('http://localhost:2100/addservices', {
+        fetch('https://food-zone-server.vercel.app/addservices', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

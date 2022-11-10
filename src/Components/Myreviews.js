@@ -13,13 +13,17 @@ const Myreviews = () => {
     useTitle("My reviews")
 
     useEffect(() => {
-        fetch(`http://localhost:2100/reviews?email=${user.email}`)
+        fetch(`https://food-zone-server-itzshakeeb.vercel.app/myreviews?email=${user.email}`, {
+            headers: {
+                authorization: `${localStorage.getItem('Login-Token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setMyrewiews(data.data))
     }, [user?.email])
 
     const heandeldelete = _id => {
-        fetch(`http://localhost:2100/reviews/${_id}`, {
+        fetch(`https://food-zone-server.vercel.app/reviews/${_id}`, {
             method: "DELETE",
         })
             .then(res => res.json())
@@ -34,7 +38,6 @@ const Myreviews = () => {
     const heandelEdit = _id => {
         naigate(`/myreviews/edit/${_id}`)
     }
-
     return (
         <div className='md:w-3/5 mx-auto' >
             {myrewiews.length ?

@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import useTitle from '../Hook/useTitile';
-import Reviews from './Reviews';
+import Review from './Review';
 
 const ServicesDetails = () => {
     useTitle("ServicesDetails")
     const details = useLoaderData()
     const { user } = useContext(authUser);
     const router = useParams();
+    const [reviews, setReviews] = useState();
 
     const getEmail = (e) => {
         e.preventDefault()
@@ -18,7 +19,7 @@ const ServicesDetails = () => {
         if (user) {
             const { displayName, photoURL, email } = user
             const userR = { id: router.id, name: displayName, image: photoURL, text: textR, email: email }
-            fetch('http://localhost:2100/reviews', {
+            fetch('https://food-zone-server.vercel.app/reviews', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -29,6 +30,13 @@ const ServicesDetails = () => {
                 .then(result => console.log(result))
         }
     }
+    useEffect(() => {
+        fetch(`https://food-zone-server.vercel.app/reviews?id=${router.id}`)
+            .then(res => res.json())
+            .then(data => {
+                setReviews(data.data)
+            })
+    }, [router.id, reviews])
 
     const { name, image_url, descriptin, price } = details.data;
 
@@ -64,10 +72,11 @@ const ServicesDetails = () => {
                 <div className="mt-5">
                     <p className='text-2xl mb-3 text-center'>What says Our customers </p>
                 </div>
-                <Reviews />
+                {
+                    reviews?.map(review => <Review key={review._id} review={review}></Review>)
+                }
             </div>
         </div>
     );
 };
-
 export default ServicesDetails;

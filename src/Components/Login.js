@@ -15,10 +15,23 @@ const Login = () => {
         setloading(true)
         googlelogin()
             .then(rs => {
+                const user = rs.user
+                const currentUser = {
+                    email: user.email
+                }
                 setUser(rs.user)
+                //get jwt token
+                fetch('https://food-zone-server-itzshakeeb.vercel.app/login', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                }).then(res => res.json()).then(data => {
+                    localStorage.setItem('Login-Token', data.token)
+                })
                 successMessage('Login Success')
                 navigate(from, { replace: true })
-
             })
             .catch(er => errorMessage(er.message))
     }
@@ -28,10 +41,26 @@ const Login = () => {
         const email = form.email.value;
         const pass = form.pass.value;
         setloading(true)
+
         loginWithEmail(email, pass)
             .then(re => {
+                const user = re.user
+                const currentUser = {
+                    email: user.email,
+                }
                 setUser(re.user)
                 form.reset()
+                //get jwt token
+                fetch('https://food-zone-server-itzshakeeb.vercel.app/login', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                }).then(res => res.json()).then(data => {
+                    localStorage.setItem('Login-Token', data.token)
+                })
+
                 successMessage('login succesFull 9;')
                 navigate(from, { replace: true })
             })

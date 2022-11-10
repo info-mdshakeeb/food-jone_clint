@@ -12,7 +12,7 @@ const Editreview = () => {
     const { _id } = router;
 
     useEffect(() => {
-        fetch(`http://localhost:2100/review/${_id}`)
+        fetch(`https://food-zone-server.vercel.app/review/${_id}`)
             .then(res => res.json())
             .then(data => setMyrewiew(data.data))
     }, [user?.email, _id])
@@ -24,7 +24,7 @@ const Editreview = () => {
             image: e.target.image.value,
             text: e.target.text.value
         }
-        fetch(`http://localhost:2100/reviews/${_id}`, {
+        fetch(`https://food-zone-server.vercel.app/reviews/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

@@ -20,7 +20,7 @@ const Register = () => {
         const user = { name, email, pass, url }
         setloading(true)
 
-        fetch('http://localhost:2100/user', {
+        fetch('https://food-zone-server.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
