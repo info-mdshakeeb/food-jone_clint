@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+## website name : Educapedia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+live site: https://food-zone-skb.web.app/
 
-## Available Scripts
+# bullet points :
 
-In the project directory, you can run:
+1. 2 login system Integrated ;
+2. message alart system ;
+3. Redirect after logging into the right direction;
+4. Fully custom design;
+5. react photo view;
 
-### `yarn start`
+# list of technologies :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## frameworks:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- react,tailwind
 
-### `yarn test`
+## libraries :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+"daisyui": "^2.38.1",
+"firebase": "^9.13.0",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-photo-view": "^1.2.2",
+"react-router-dom": "^6.4.3",
+"react-scripts": "5.0.1",
+"sweetalert2": "^11.6.7",
+"web-vitals": "^2.1.0"
 
-### `yarn build`
+live server : https://food-zone-server.vercel.app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I use vercel for store my data;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+note : i hardly try implement the authentication system. It works in local host but I cannot eat. It gives error in the firebase, I try my best but sorry :/(
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    here is the problem pic :
+    https://s10.gifyu.com/images/Screenshot-2022-11-10-at-5.52.27-PM.png
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+all the authentication system are implemented in the code for this problem i remove onlt auth function form server .
+In the localHost works perfectly..
